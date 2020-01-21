@@ -1,5 +1,7 @@
 <?php
 
+use League\CommonMark\CommonMarkConverter;
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $config = require(__DIR__ . '/../config.php');
@@ -33,7 +35,12 @@ if (isset($config['parts']['header'])) {
     include $config['parts']['header'];
 }
 
-echo $content;
+$converter = new CommonMarkConverter([
+    'html_input' => 'strip',
+    'allow_unsafe_links' => false,
+]);
+
+echo $converter->convertToHtml($content);
 
 if (isset($config['parts']['footer'])) {
     include $config['parts']['footer'];
