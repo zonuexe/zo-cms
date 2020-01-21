@@ -8,7 +8,7 @@ $config = require(__DIR__ . '/../config.php');
 
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-if (strpos($path, '//') === 0) {
+if (strpos($path, '//') === 0 || strpos($path, '..') !== false) {
     $path = '/404';
 } elseif (preg_match('@/\z@', $path)) {
     $path .= 'index';
