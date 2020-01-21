@@ -3,6 +3,7 @@
     "description": "Simple file-based CMS",
     "license": "Apache-2.0",
     "require": {
-        "php": "^7.4"
+        "php": "^7.4",
+        "league/commonmark": "^1.2"
     }
 }
